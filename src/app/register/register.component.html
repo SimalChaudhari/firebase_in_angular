@@ -1,0 +1,37 @@
+
+<!--The whole content below can be removed with the new code.-->
+<div style="text-align:center;padding: 30px 200px 89px 200px">
+    <div class="login-page">
+        <h1>Welcome to Login!!</h1>
+        <form>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
+            </div>
+            <div class="form-group">
+                <label class="left-block">Password:</label>
+                <input type="password" class="form-control" placeholder="Password" #userPwd required>
+            </div>
+
+            <button (click)="authService.register(userEmail.value, userPwd.value)" class="btn btnPrimary">
+                Sign Up
+            </button>
+            
+            <div class="formGroup">
+                <span class="or"><span class="orInner">Or</span></span>
+            </div>
+        
+            <!-- Continue with Google -->
+            <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                    <i class="fab fa-google-plus-g"></i>
+                    Continue with Google
+                </button>
+            </div>
+        </form>
+        
+        <div class="redirectToLogin">
+            <span>Already have an account? <a class="redirect" href="javascript:void(0)" routerLink="/login">Log In</a></span>
+        </div>
+    </div>
+</div>

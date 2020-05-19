@@ -1,0 +1,51 @@
+<div class="container">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div class="sharing">
+            <div class="sharing_feild">
+                <div class="main_idea">
+                    <p>Main Idea</p>
+                    <input type="text" formControlName="MainIdea"/>
+                </div>
+                <div class="main_idea">
+                    <p>Keyword</p>
+                    <input type="text" formControlName="keywords" />
+                </div>
+            </div>
+            <div class="sharing_level">
+                <p>Sharing level</p>
+                <div class="side_box">
+                    <!-- <div class="round"> -->
+                        <input type="radio" class="radio" d="male" value="Public" name="sharing_level" formControlName="sharing_level" />
+                        <label for="checkbox"><span>Public</span></label>
+                    <!-- </div>	 -->
+                    <!-- <div class="round pad_round"> -->
+                        <input type="radio" class="radio" value="Private" name="sharing_level" formControlName="sharing_level" />
+                        <label for="checkbox1"><span>private</span></label>
+                    <!-- </div>	 -->
+                </div>
+            </div>
+            <div class="extra_feild" formArrayName="Extrafields">
+                <div class="extra_feild_title">
+                    <p>Extra fields</p>
+                    <a href="javascript:void(0)" (click)="addField()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </div>
+                <div class="extra_feild_detail" *ngFor="let fields of Extrafields().controls; let i=index" [formGroupName]="i">
+                    <!-- <div > -->
+                        <input type="text" placeholder="FeildName" formControlName="key" class="name_feild" />
+                        <input type="text" placeholder="Feild Value" formControlName="value" class="value_feild" />
+                        <button (click)="removeField(i)"  class="btn btn-danger">Remove</button>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="field_button">
+                <div class="field_button_1">
+                    <a [routerLink]="['/']">Cancel</a>
+                </div>
+                <div class="field_button_1">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <!-- <a href="#">Save</a> -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
