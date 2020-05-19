@@ -54,9 +54,9 @@ firebaseConfig : {
 
 ## 2. Angular
 
-**Step 1** Create new project with 'ng new myApp"
+**Step 1** Create new project with `ng new myApp`
 
-**Step 2** Put firebase configurtion in environment.ts  file.
+**Step 2** Put firebase configurtion in `environment.ts`  file.
 
 **Step 3** Now generate component and install firebase with bellow command.
 `npm i --save firebase @angular/fire`
@@ -162,7 +162,7 @@ export class ContainerComponent{
 
   **Step 1**  Make builld file with `ng build` or `npm run build` command
 
-  **Step 2 ** Install the firebase commmand line tool with bellow command
+  **Step 2** Install the firebase commmand line tool with bellow command
            `npm install -g firebase-tools`
 
   **Step 3**  Press bellow command in your project directory and login with your firebase accout.
