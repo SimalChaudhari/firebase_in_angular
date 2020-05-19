@@ -62,16 +62,18 @@ Now we have Firebase project and Firestore Database with a collection "test" is 
 
 Step 5) Add configuration in angular project in environment.ts file
 
-`example :` 
-`firebaseConfig : {`
-    `apiKey: "YOUR_apiKey",`
-    `authDomain: "YOUR_authDomain",`
-    `databaseURL: "YOUR_databaseURL",`   
-    `projectId: "YOUR_projectId",`
-    `storageBucket: "storageBucket",`
-    `messagingSenderId: "messagingSenderId",`
-    `appId: "appId",`
-    `measurementId: "measurementId"`
-  `}`
+```sh
+example : 
+firebaseConfig : {
+    apiKey: "YOUR_apiKey",
+    authDomain: "YOUR_authDomain",
+    databaseURL: "YOUR_databaseURL",
+    projectId: "YOUR_projectId",
+    storageBucket: "storageBucket",
+    messagingSenderId: "messagingSenderId",
+    appId: "appId",
+    measurementId: "measurementId"
+  }
+```
 
 ## 2. Angular
