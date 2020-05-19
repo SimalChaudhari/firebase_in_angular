@@ -53,10 +53,10 @@ firebaseConfig : {
 
 
 ## 2. Angular
-**
-Step 1** Create new project with 'ng new myApp"
 
-**Step 2 ** Put firebase configurtion in environment.ts  file.
+**Step 1** Create new project with 'ng new myApp"
+
+**Step 2** Put firebase configurtion in environment.ts  file.
 
 **Step 3** Now generate component and install firebase with bellow command.
 `npm i --save firebase @angular/fire`
