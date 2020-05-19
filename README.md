@@ -51,4 +51,134 @@ firebaseConfig : {
   }
 ```
 
+
 ## 2. Angular
+**
+Step 1** Create new project with 'ng new myApp"
+
+**Step 2 ** Put firebase configurtion in environment.ts  file.
+
+**Step 3** Now generate component and install firebase with bellow command.
+`npm i --save firebase @angular/fire`
+
+**Step 4**  Go to `app.module.ts` and import firebase modue as bellow
+```sh
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
+
+
+  imports: [
+    ....,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+  ],
+```
+
+**Step 5**  Now Create  service file `ideas.service.ts` with firebase function
+```sh
+
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+  })
+export class IdeasService {
+    constructor(private firestore: AngularFirestore) { }
+
+    getIdeas() {
+        return this.firestore.collection('ideas').snapshotChanges();
+    }
+
+    createIdeas(data: any){
+        return this.firestore.collection('ideas').add(data);
+    }
+
+    updateIdeas(data: any){
+        delete data.id;
+        this.firestore.doc('ideas/' + data.id).update(data);
+    }
+
+    deleteIdeas(Id: any){
+        this.firestore.doc('ideas/' + Id).delete();
+    }
+  }
+  ```
+**Note** Above `ideas` is a collection(table) name for operation.
+
+**Step 6** Now import service in component
+
+
+```sh
+import { IdeasService} from 'src/app/services/ideas.service'    
+
+export class ContainerComponent{
+    ideas: any[];
+    items: Observable<any[]>;
+    searchText:string = "";
+
+    constructor(private ideasService: IdeasService) {}
+    
+    ngOnInit() {
+        this.ideasService.getIdeas().subscribe(data => {
+            this.ideas = data.map(e => {
+                return {
+                id: e.payload.doc.id,
+                MainIdea: e.payload.doc.data()['MainIdea'],
+                abstract: e.payload.doc.data()['abstract'],
+                concept: e.payload.doc.data()['concept'],
+                createdDate: e.payload.doc.data()['createdDate'],
+                keywords: e.payload.doc.data()['keywords'],
+                sharingLevel: e.payload.doc.data()['sharingLevel'],
+                user_id: e.payload.doc.data()['user_id'],
+                };
+            })
+        });
+    }
+}
+```
+
+`component.html`
+```sh
+
+        <div class="margin_set" *ngFor="let idea of ideas">
+            <div class="search_detail">
+                <p class="Implement">{{idea.MainIdea ? idea.MainIdea : ''}}</p>
+                <p class="idea">{{idea.keywords ? idea.keywords : ''}}</p>
+            </div>
+        </div>
+```
+
+
+**Step 7** Run the project and check in browser.
+
+## 2. Deploy
+
+**Make sure that configuration code is available in environment.prod.ts file as well.**
+
+  **Step 1**  Make builld file with `ng build` or `npm run build` command
+
+  **Step 2 ** Install the firebase commmand line tool with bellow command
+           `npm install -g firebase-tools`
+
+  **Step 3**  Press bellow command in your project directory and login with your firebase accout.
+          `firebase login`
+
+  **Step 4** Initialize the prject with `firebase init`
+           now there will be asked few question and if you want to deploye only then select 
+          ` Firebase CLI features…: Hosting`
+
+   `Public directory : dist`
+
+   `Configure as single-page app : Y`
+
+   `Overwrite index.html: No.`
+ 
+
+   **Step 5**   Now press the `firebase deploy` command and it will take few minutes to deploye project on firebase and at the end
+   it will generate deploye URL so you can copy and paste URL in browser and check it.
+
