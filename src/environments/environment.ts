@@ -5,15 +5,16 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyD6E9OYBX72KCRcnwPAzDjVy8MmDbbEgfw",
-    authDomain: "stackblitzfire.firebaseapp.com",
-    databaseURL: "https://stackblitzfire.firebaseio.com",
-    projectId: "ideas-ca75c",
-    storageBucket: "ideas-ca75c.appspot.com",
-    messagingSenderId: "1089605485833",
-    appId: "1:1089605485833:web:c4942d5c701cb2ec337fd8",
-    measurementId: "G-RL0DDCTK9G"
+    apiKey: "YOUR_apiKey",
+    authDomain: "YOUR_authDomain",
+    databaseURL: "YOUR_databaseURL",
+    projectId: "YOUR_projectId",
+    storageBucket: "storageBucket",
+    messagingSenderId: "messagingSenderId",
+    appId: "appId",
+    measurementId: "measurementId"
   }
+
 };
 
 /*
